@@ -1,0 +1,9 @@
+{
+  "app": {
+    "port": 3000,
+    "page_size": 10
+  },
+  "search": {
+    "address": "http://es:9200"
+  }
+}
