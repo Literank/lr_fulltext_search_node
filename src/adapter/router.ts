@@ -21,6 +21,18 @@ class RestHandler {
       res.status(404).json({ error: "Failed to create" });
     }
   }
+
+  public async searchBooks(req: Request, res: Response): Promise<void> {
+    try {
+      const books = await this.bookOperator.searchBooks(
+        (req.query.q as string) || ""
+      );
+      res.status(201).json(books);
+    } catch (err) {
+      console.error(`Failed to search books: ${err}`);
+      res.status(404).json({ error: "Failed to search" });
+    }
+  }
 }
 
 // Create router
@@ -34,6 +46,7 @@ function MakeRouter(wireHelper: WireHelper): express.Router {
     res.json({ status: "ok" });
   });
   router.post("/books", restHandler.createBook.bind(restHandler));
+  router.get("/books", restHandler.searchBooks.bind(restHandler));
   return router;
 }
 

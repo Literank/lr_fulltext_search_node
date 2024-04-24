@@ -21,4 +21,17 @@ export class ElasticSearchEngine implements BookManager {
     });
     return result._id;
   }
+
+  async searchBooks(q: string): Promise<Book[]> {
+    const result = await this.client.search({
+      index: INDEX_BOOK,
+      query: {
+        multi_match: {
+          query: q,
+          fields: ["title", "author", "content"],
+        },
+      },
+    });
+    return result.hits.hits.map((hit) => hit._source as Book);
+  }
 }

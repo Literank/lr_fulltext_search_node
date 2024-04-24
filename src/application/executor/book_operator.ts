@@ -11,4 +11,8 @@ export class BookOperator {
   async createBook(b: Book): Promise<string> {
     return await this.bookManager.indexBook(b);
   }
+
+  async searchBooks(q: string): Promise<Book[]> {
+    return await this.bookManager.searchBooks(q);
+  }
 }
