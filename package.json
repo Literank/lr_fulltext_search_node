@@ -1,0 +1,19 @@
+{
+  "name": "lr_fulltext_search_node",
+  "version": "1.0.0",
+  "description": "Example project: building full-text search API in Node.js.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "literank",
+    "full-text",
+    "search"
+  ],
+  "author": "literank.com",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
