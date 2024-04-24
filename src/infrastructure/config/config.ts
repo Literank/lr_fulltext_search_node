@@ -2,6 +2,7 @@ import { readFileSync } from "fs";
 
 interface SearchConfig {
   address: string;
+  index: string;
 }
 
 interface ApplicationConfig {

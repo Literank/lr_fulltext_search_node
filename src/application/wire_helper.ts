@@ -7,7 +7,11 @@ export class WireHelper {
   private engine: ElasticSearchEngine;
 
   constructor(c: Config) {
-    this.engine = new ElasticSearchEngine(c.search.address, c.app.page_size);
+    this.engine = new ElasticSearchEngine(
+      c.search.address,
+      c.search.index,
+      c.app.page_size
+    );
   }
 
   bookManager(): BookManager {
