@@ -1,12 +1,13 @@
-import express, { Request, Response } from "express";
+import { WireHelper } from "./application";
+import { InitApp } from "./adapter";
+import { parseConfig } from "./infrastructure/config";
 
-const app = express();
-const port = 3000;
+const CONFIG_FILENAME = "config.json";
 
-app.get("/", (req: Request, res: Response) => {
-  res.json({ status: "ok" });
-});
+const c = parseConfig(CONFIG_FILENAME);
+const wireHelper = new WireHelper(c);
+const app = InitApp(wireHelper);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(c.app.port, () => {
+  console.log(`Running on port ${c.app.port}`);
 });
